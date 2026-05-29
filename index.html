@@ -6,15 +6,34 @@
     <style>
         body {
             margin: 0; padding: 0;
-            /* Buradaki 'sunucu2-foto.jpg' kısmını kendi fotoğrafının tam adıyla değiştir! */
-            background: #000 url('arkaplangırıs.png') no-repeat center center fixed; 
-            background-size: cover;
-            height: 100vh;
-            width: 100vw;
+            background-color: #000;
             overflow: hidden;
+        }
+
+        /* Videonun ekranı boşluksuz kaplaması için */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; 
+            z-index: -1;
         }
     </style>
 </head>
 <body>
-    </body>
+    <video id="bg-video" src="faremuzigi.mp4" autoplay loop></video>
+
+    <script type="text/javascript">
+        // Chrome ses engelini aşmayı denemek ve sesi %50 seviyesinde tutmak için
+        var video = document.getElementById("bg-video");
+        video.volume = 0.5; // Sesi çok yüksek gelirse burayı 0.2, az gelirse 1.0 yapabilirsin.
+        
+        // Videoyu zorla oynatma komutu
+        video.play().catch(function(error) {
+            console.log("Tarayıcı sesli otomatik oynatmayı engelledi.");
+        });
+    </script>
+</body>
 </html>
